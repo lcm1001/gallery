@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Nook-Art Gallery</title>
+    <style>
+        * {
+            margin: 10;
+            padding: 10;
+            box-sizing: border-box;
+        }
+
+
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background-color: #f5f3f0;
+        width: 100%;
+        overflow-x: hidden;
+
+    }
+
+    header {
+        background-color: #1a1a1a;
+        color: white;
+        padding: 1.5rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+ nav {
+        max-width: 100%;
+        padding: 0 1rem; /* Reduce padding on mobile */
+        flex-wrap: wrap; /* Allow wrapping */
+    }
+
+    .logo {
+        font-size: 1.3rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+        text-decoration: none;
+        color: #f5dca5;
+    }
+
+    .logo-main {
+        font-weight: 600;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 0.8rem; /* Smaller gap on mobile */
+        flex-wrap: wrap
+        
+    }
+
+    .nav-links a {
+        font-size: 0.75rem; /* Smaller text on mobile */
+        padding: 0.3rem 0.5rem;
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
+        
+    }
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+nav {
+padding: 0 3rem;
+}
+
+
+.nav-links {
+   gap: 2rem;
+}
+
+.nav-links a {
+   font-size: 0.95rem;
+}
+
+
+}
+
+    .nav-links a:hover {
+        opacity: 0.6;
+    }
+
+    .nav-links a.active {
+        border-bottom: 2px solid white;
+        padding-bottom: 0.3rem;
+    }
+
+.logo{
+   font-size:1.3rem;
+   font-weight:300;
+letter-spacing:3px;
+color: #f5dca5;
+
+}
+
+    .cart-link {
+        position: relative;
+        font-weight: 500 !important;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -12px;
+        background: #e74c3c;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 100%;
+        width:100%;
+        margin: 0 auto;
+        padding: 1rem; /* reduce padding on mobile */
+}
+
+/* For desktop, increase max-width and padding */
+@media (min-width: 1024px) {
+.container {
+max-width: 1400px;
+padding: 3rem;
+}
+}
+    
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .page-header h1 {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 4px;
+        margin-bottom: 1rem;
+    }
+
+    .page-header p {
+        font-size: 1.1rem;
+        color: #666;
+        font-weight: 300;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .product-card {
+        background: white;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-image {
+width: 100%;
+height: 250px;  /* Smaller on mobile */
+background-size: cover;
+background-position: center;
+
+
+}
+
+@media (min-width: 1024px) {
+.product-image {
+height: 300px;  /* Taller on desktop */
+}
+
+.product-image1 {
+        width: 339px;
+        height:251px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .product-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(26, 26, 26, 0.9);
+        color: white;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+
+    .product-info {
+        padding: 2rem;
+    }
+
+    .product-info h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+
+    .product-artist {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .product-details {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 1rem;
+    }
+
+    .product-price {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #1a1a1a;
+        margin: 1rem 0;
+    }
+
+    .product-copyright {
+        font-size: 0.75rem;
+        color: #999;
+        font-style: italic;
+        margin: 1rem 0;
+    }
+
+    .add-to-cart-btn {
+        width: 100%;
+        padding: 1rem;
+        background-color: #1a1a1a;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        transition: background-color 0.3s;
+        font-weight: 400;
+    }
+
+    .add-to-cart-btn:hover {
+        background-color: #333;
+    }
+
+    .add-to-cart-btn:active {
+        background-color: #000;
+    }
+
+    .notification {
+        position: fixed;
+        top: 100px;
+        right: 2rem;
+        background: #4caf50;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+        animation: slideIn 0.3s ease-out;
+        display: none;
+    }
+
+    .notification.show {
+        display: block;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            padding: 0 1.5rem;
+        }
+
+        .nav-links {
+            gap: 0rem;
+            font-size: 0.85rem;
+        }
+
+        .container {
+            padding: 1.5rem;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+        }
+
+        .product-grid {
+            grid-template-columns: 1fr;
+        }
+
+.about-content {
+   display:grid;
+grid-template-columns:1fr 1fr;
+gap:4em;
+align-items:center;
+
+.about-text p{
+ margin-bottom:1.5rem;
+font-size:1.05rem;
+line-height:1;
+font-weight:300;
+color:#333;
+}
+
+
+.contact-section {
+            text-align: center;
+            margin: 1rem auto;
+        }
+
+        .contact-form {
+            max-width: 100%;
+            margin: 1rem auto;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            font-family: inherit;
+            background-color: #f5f3f0;
+            font-weight: 300;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 180px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+        }
+
+        .btn-submit {
+            background-color: #1a1a1a;
+            color: white;
+            border: 2px solid #1a1a1a;
+            padding: 1rem 3rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: transparent;
+            color: #1a1a1a;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .about-content,
+            .vm-container,
+            .ta-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            nav {
+                padding: 0 1.5rem;
+            }
+
+            section {
+                padding: 0 1.5rem;
+            }
+    }
+</style>
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><span class="logo-main">
+<img src="nook_logo.jpg"> Art Gallery </a>
+            <ul class="nav-links">
+                <li><a href="index.html"  class="active">HOME</a></li>
+<li><a href="julie_biography.html">ARTIST BIO</a></li>
+                <li><a href="oil-paintings.html">OIL PAINTING</a></li>
+                
+<li><a href="#about">ABOUT</a></li>
+<li><a href="#contact" class="contact">CONTACT</a></li>
+                <li><a href="watercolor-paintings.html">WATERCOLORS</a></li>
+<li><a href="classical-study-paintings.html">CLASSICAL STUDY</a></li>
+<li><a href="shipping.html">SHIPPING</a></li>
+<li><a href="copyright.html">COPYRIGHT</a></li>
+                <li><a href="cart.html" class="cart-link">
+                    CART
+                    <span class="cart-count" id="cartCount">0</span>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+<section id="home" class="hero">
+<div class="hero-content">
+<h1>THE NOOK - ART GALLERY</h1>
+
+ 
+<p>A reflective space where art meets emotion</p>
+
+<ul class="ta-list">
+
+<li>Free Shipping on Orders over $300 (US Only)</li>   
+<li> Artist's Biography:
+<a href="julie_biography.html">Li Chen Ma</a></li>
+<li><a href="oil-paintings.html">Original Oil Paintings On Canvas (Floral)</a></li>
+<li><a href="landscape-paintings.html">Original Oil Paintings On Canvas (Landscape)</a></li>
+<li><a href="watercolor-paintings.html">Watercolor Paintings</a></li>
+<li><a href="classical-study-paintings.html">Classical Studies</a></li>
+
+<p class="copyright">© Li Chen Ma. Original oil painting. All rights reserved.</p>
+
+</ul> 
+</div>
+</section>
+ 
+<section id="about"> 
+
+<h3>VISION \ MISSION</h3>
+<p>To be a reflective space where art meets emotion.</p>
+<p>Supporting local and international artists while offering a thoughtfully curated online art gallery experience.</p>
+                   
+
+<div class="about-content">
+<div class="about-text">
+
+
+        <h2>ABOUT THE NOOK </h2>
+
+<p>  The Nook Art Gallery is an online art gallery dedicated to creating meaningful connections between art and audiences. Our intimate space serves as a reflective environment where emerging and established artists can share their narratives.</p>
+                
+<p>We believe in the power of art to evoke emotion, provoke thought, and inspire dialogue. Through carefully curated exhibitions, we aim to support both local Taiwanese talent and international artists, contributing to Taipei's vibrant cultural landscape.</p>
+ 
+ 
+                  
+                
+</div>
+</div>
+</section>
+ 
+
+   
+      <section id="contact" class="contact-section">
+
+<h3>ARTISTIC DIRECTION</h3>
+                <p>Art works that are evocative, emotive, and thoughtfully presented.</p>
+                <p>We focus on narrative-driven pieces that invite contemplation and emotional engagement, showcasing artists who challenge conventions while maintaining accessibility to diverse audiences.</p>
+                  
+
+<div class="contact-content">
+<div class="contact-text">
+<h3>GET IN TOUCH WITH US</h3>
+
+<div class="contact-form">
+
+            <form> 
+                <div class="form-group">
+                    <label for="name">NAME</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">EMAIL</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">MESSAGE</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">SEND MESSAGE</button>
+            </form>
+</div>
+
+</div>
+     
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 The Nook. All rights reserved.</p>
+        <p><a href="mailto:lchenma088@gmail.com">Email: lchenma088@gmail.com</a> </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+
+<!-- Notification popup -->
+<div class="notification" id="notification"></div>
+
+<script>
+    // Shared cart management system
+    // This code should be the same across all your painting pages
+
+    // Get cart from localStorage
+    function getCart() {
+        return JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+    }
+
+    // Save cart to localStorage
+    function saveCart(cart) {
+        localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        updateCartCount();
+    }
+
+    // Update cart count badge
+    function updateCartCount() {
+        const cart = getCart();
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cartCount').textContent = totalItems;
+       
+        // Hide badge if cart is empty
+        const badge = document.getElementById('cartCount');
+        badge.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+
+    // Add item to cart
+    function addToCart(title, artist, price, details) {
+        let cart = getCart();
+       
+        // Check if item already exists
+        const existingItem = cart.find(item => item.title === title);
+       
+        if (existingItem) {
+            existingItem.quantity += 1;
+            showNotification(`Updated quantity for "${title}"`);
+        } else {
+            cart.push({
+                title: title,
+                artist: artist,
+                price: price,
+                details: details,
+                quantity: 1,
+                type: 'Oil Painting' // You can change this for different pages
+            });
+            showNotification(`"${title}" added to cart!`);
+        }
+       
+        saveCart(cart);
+    }
+
+    // Show notification
+    function showNotification(message) {
+        const notification = document.getElementById('notification');
+        notification.textContent = message;
+        notification.classList.add('show');
+       
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+
+    // Initialize cart count on page load
+    updateCartCount();
+</script>
+
+
+</body>
+</html>

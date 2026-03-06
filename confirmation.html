@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - The Nook Taipei</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background-color: #f5f3f0;
+        padding: 2rem;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    }
+
+    .header {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: white;
+        padding: 3rem;
+        text-align: center;
+    }
+
+    .success-icon {
+        width: 80px;
+        height: 80px;
+        background: #4caf50;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 3rem;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+        margin-bottom: 0.5rem;
+    }
+
+    .header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        font-weight: 300;
+    }
+
+    .content {
+        padding: 3rem;
+    }
+
+    .order-number {
+        background: #f5f3f0;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        border-left: 4px solid #4caf50;
+    }
+
+    .order-number strong {
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        color: #1a1a1a;
+    }
+
+    .order-number .number {
+        font-size: 1.5rem;
+        color: #2c3e50;
+        font-weight: 600;
+        margin-top: 0.5rem;
+        font-family: 'Courier New', monospace;
+    }
+
+    .info-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .info-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        color: #2c3e50;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e0e0e0;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .info-box {
+        background: #fafafa;
+        padding: 1.5rem;
+        border-radius: 5px;
+    }
+
+    .info-box h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+        color: #1a1a1a;
+        letter-spacing: 1px;
+    }
+
+    .info-box p {
+        margin-bottom: 0.3rem;
+        color: #333;
+        font-size: 0.95rem;
+    }
+
+    .order-items {
+        margin-top: 1.5rem;
+    }
+
+    .item {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        border-bottom: 1px solid #e0e0e0;
+        align-items: center;
+    }
+
+    .item:last-child {
+        border-bottom: none;
+    }
+
+    .item-number {
+        font-weight: 600;
+        color: #666;
+        font-size: 1.1rem;
+    }
+
+    .item-details h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+        font-weight: 500;
+    }
+
+    .item-details .artist {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .item-details .copyright {
+        color: #999;
+        font-size: 0.8rem;
+        font-style: italic;
+    }
+
+    .item-price {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #2c3e50;
+        text-align: right;
+    }
+
+    .order-summary {
+        background: #f5f3f0;
+        padding: 2rem;
+        margin-top: 2rem;
+    }
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.8rem 0;
+        font-size: 1rem;
+    }
+
+    .summary-row.total {
+        border-top: 2px solid #1a1a1a;
+        margin-top: 1rem;
+        padding-top: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .payment-method {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .card-ending {
+        font-family: 'Courier New', monospace;
+        background: white;
+        padding: 0.2rem 0.5rem;
+        border-radius: 3px;
+    }
+
+    .shipping-badge {
+        background: #4caf50;
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 3px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .next-steps {
+        background: #e3f2fd;
+        padding: 2rem;
+        margin: 2rem 0;
+        border-left: 4px solid #2196f3;
+    }
+
+    .next-steps h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: #1976d2;
+    }
+
+    .next-steps ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .next-steps li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .next-steps li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4caf50;
+        font-weight: bold;
+    }
+
+    .action-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn {
+        padding: 1rem 2rem;
+        text-align: center;
+        text-decoration: none;
+        border: 2px solid #1a1a1a;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    .btn-primary {
+        background-color: #1a1a1a;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #333;
+    }
+
+    .btn-secondary {
+        background-color: white;
+        color: #1a1a1a;
+    }
+
+    .btn-secondary:hover {
+        background-color: #f5f3f0;
+    }
+
+    .contact-info {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e0e0e0;
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .contact-info a {
+        color: #2c3e50;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .contact-info a:hover {
+        text-decoration: underline;
+    }
+
+    .print-btn {
+        float: right;
+        padding: 0.5rem 1rem;
+        background: white;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        font-size: 0.9rem;
+    }
+
+    .print-btn:hover {
+        background: #f5f3f0;
+    }
+
+    @media print {
+        body {
+            background: white;
+            padding: 0;
+        }
+        .action-buttons, .print-btn {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .info-grid, .action-buttons {
+            grid-template-columns: 1fr;
+        }
+
+        .item {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+
+        .item-price {
+            text-align: left;
+        }
+
+        .content {
+            padding: 1.5rem;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="success-icon">✓</div>
+            <h1>ORDER CONFIRMED</h1>
+            <p>Thank you for your purchase!</p>
+        </div>
+
+```
+    <div class="content">
+        <button class="print-btn" onclick="window.print()">Print Confirmation</button>
+
+        <div class="order-number">
+            <strong>ORDER NUMBER</strong>
+            <div class="number" id="orderNumber">TN-2025-10268</div>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;">
+                Confirmation email sent to: <strong id="customerEmail">customer@example.com</strong>
+            </p>
+        </div>
+
+        <!-- Order Details -->
+        <div class="info-section">
+            <h2>ORDER DETAILS</h2>
+            <div class="order-items">
+                <div class="item">
+                    <div class="item-number">1</div>
+                    <div class="item-details">
+                        <h4>Misty Mountain Sunrise</h4>
+                        <p class="artist">by Li Chen Ma</p>
+                        <p class="copyright">© Li Chen Ma. Original oil painting.</p>
+                    </div>
+                    <div class="item-price">$450.00</div>
+                </div>
+
+                <div class="item">
+                    <div class="item-number">2</div>
+                    <div class="item-details">
+                        <h4>Tranquil Garden</h4>
+                        <p class="artist">by Li Chen Ma</p>
+                        <p class="copyright">© Li Chen Ma. Original oil painting.</p>
+                    </div>
+                    <div class="item-price">$380.00</div>
+                </div>
+            </div>
+
+            <div class="order-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span>$830.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping:</span>
+                    <span><span class="shipping-badge">FREE</span></span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax (7.8%):</span>
+                    <span>$70.55</span>
+                </div>
+                <div class="summary-row total">
+                    <span>TOTAL PAID:</span>
+                    <span>$900.55</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shipping & Payment Info -->
+        <div class="info-section">
+            <h2>SHIPPING & PAYMENT INFORMATION</h2>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>SHIPPING ADDRESS</h3>
+                    <p id="shipName">John Smith</p>
+                    <p id="shipAddress">123 Main Street</p>
+                    <p id="shipAddress2">Apt 4B</p>
+                    <p id="shipCity">San Francisco, CA 94102</p>
+                    <p id="shipCountry">United States</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>PAYMENT METHOD</h3>
+                    <div class="payment-method">
+                        <span>💳 Visa ending in</span>
+                        <span class="card-ending" id="cardEnding">4242</span>
+                    </div>
+                    <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        Payment processed securely
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="next-steps">
+            <h3>WHAT HAPPENS NEXT?</h3>
+            <ul>
+                <li>You will receive a confirmation email with your order details</li>
+                <li>Your artwork will be carefully packaged within 3-5 business days</li>
+                <li>You'll receive a tracking number once your order ships</li>
+                <li>Each painting includes a signed Certificate of Authenticity</li>
+                <li>Estimated delivery: 5-7 business days after shipment</li>
+            </ul>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="#" class="btn btn-primary" onclick="alert('This would send you to order tracking page'); return false;">
+                TRACK ORDER
+            </a>
+            <a href="nookartgallery_home.html" class="btn btn-secondary" onclick="alert('This would return to homepage'); return false;">
+                CONTINUE SHOPPING
+            </a>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <p>Questions about your order?</p>
+            <p>Contact us at <a href="mailto:lchenma088@gmail.com">lchenma088@gmail.com</a></p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">
+                Order placed on <span id="orderDate">October 26, 2025</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Generate random order number
+    function generateOrderNumber() {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+        return `TN-${year}${month}${day}-${random}`;
+    }
+
+    // Format current date
+    function formatDate() {
+        const date = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
+
+    // Initialize page with dynamic data
+    window.onload = function() {
+        // Get order data from localStorage
+        const orderData = JSON.parse(localStorage.getItem('lastOrder') || '{}');
+       
+        if (!orderData.items || orderData.items.length === 0) {
+            // No order data found
+            document.querySelector('.content').innerHTML = `
+                <div style="text-align: center; padding: 3rem;">
+                    <h2>No Order Found</h2>
+                    <p>Please complete checkout to see your order confirmation.</p>
+                    <a href="cart.html" style="display: inline-block; margin-top: 2rem; padding: 1rem 2rem; background: #1a1a1a; color: white; text-decoration: none;">Return to Cart</a>
+                </div>
+            `;
+            return;
+        }
+
+        // Set order number
+        document.getElementById('orderNumber').textContent = generateOrderNumber();
+       
+        // Set customer email
+        if (orderData.customer && orderData.customer.email) {
+            document.getElementById('customerEmail').textContent = orderData.customer.email;
+        }
+       
+        // Set order date
+        document.getElementById('orderDate').textContent = formatDate();
+       
+        // Update order items
+        const itemsContainer = document.querySelector('.order-items');
+        itemsContainer.innerHTML = '';
+       
+        orderData.items.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            itemsContainer.innerHTML += `
+                <div class="item">
+                    <div class="item-number">${index + 1}</div>
+                    <div class="item-details">
+                        <h4>${item.title}</h4>
+                        <p class="artist">by ${item.artist}</p>
+                        <p class="copyright">© ${item.artist}. Original oil painting.</p>
+                    </div>
+                    <div class="item-price">$${itemTotal.toFixed(2)}</div>
+                </div>
+            `;
+        });
+       
+        // Update totals
+        const totals = orderData.totals;
+        document.querySelector('.order-summary').innerHTML = `
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span>$${totals.subtotal.toFixed(2)}</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping:</span>
+                <span>${totals.shipping === 0 ? '<span class="shipping-badge">FREE</span>' : '$' + totals.shipping.toFixed(2)}</span>
+            </div>
+            <div class="summary-row">
+                <span>Tax (7.8%):</span>
+                <span>$${totals.tax.toFixed(2)}</span>
+            </div>
+            <div class="summary-row total">
+                <span>TOTAL PAID:</span>
+                <span>$${totals.total.toFixed(2)}</span>
+            </div>
+        `;
+       
+        // Update shipping address
+        if (orderData.customer) {
+            const c = orderData.customer;
+            document.getElementById('shipName').textContent = `${c.firstName} ${c.lastName}`;
+            document.getElementById('shipAddress').textContent = c.address;
+            document.getElementById('shipAddress2').textContent = c.address2 || '';
+            document.getElementById('shipCity').textContent = `${c.city}, ${c.state} ${c.zip}`;
+            document.getElementById('shipCountry').textContent = c.country === 'US' ? 'United States' : c.country;
+           
+            // Update card info (last 4 digits)
+            if (c.cardNumber) {
+                const last4 = c.cardNumber.replace(/\s/g, '').slice(-4);
+                document.getElementById('cardEnding').textContent = last4;
+            }
+        }
+    };
+
+    // Simulate auto-print option (optional)
+    // Uncomment if you want to offer automatic printing
+    // setTimeout(() => {
+    //    if (confirm('Would you like to print your order confirmation?')) {
+    //        window.print();
+    //    }
+    // }, 1000);
+</script>
+
+
+</body>
+</html>

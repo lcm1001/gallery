@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copyright - The Nook</title>
+    <style>
+        * {
+            margin: 10;
+            padding: 20;
+            box-sizing: border-box;
+        }
+
+
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background-color: #f5f3f0;
+    }
+
+    header {
+        background-color: #1a1a1a;
+        color: white;
+        padding: 1.5rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav {
+        max-width: 100%;
+        padding: 0 1rem; /* Reduce padding on mobile */
+        flex-wrap: wrap; /* Allow wrapping */
+    }
+
+    .logo {
+        font-size: 1.3rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+        text-decoration: none;
+        color: #f5dca5;
+    }
+
+    .logo-main {
+        font-weight: 600;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 0.8rem; /* Smaller gap on mobile */
+        flex-wrap: wrap
+        
+    }
+
+    .nav-links a {
+        font-size: 0.75rem; /* Smaller text on mobile */
+        padding: 0.3rem 0.5rem;
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
+        
+    }
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+nav {
+padding: 0 3rem;
+}
+
+
+.nav-links {
+   gap: 2rem;
+}
+
+.nav-links a {
+   font-size: 0.95rem;
+}
+
+
+
+
+    .nav-links a:hover {
+        opacity: 0.6;
+    }
+
+    .nav-links a.active {
+        border-bottom: 2px solid white;
+        padding-bottom: 0.3rem;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -12px;
+        background: #e74c3c;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 3rem;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .page-header h1 {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 4px;
+        margin-bottom: 1rem;
+    }
+
+    .page-header p {
+        font-size: 1.1rem;
+        color: #666;
+        font-weight: 300;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .product-card {
+        background: white;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-image {
+        width: 339px;
+        height:426px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+.product-image1 {
+        width: 339px;
+        height:251px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .product-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(26, 26, 26, 0.9);
+        color: white;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+
+    .product-info {
+        padding: 2rem;
+    }
+
+    .product-info h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+
+    .product-artist {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .product-details {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 1rem;
+    }
+
+    .product-price {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #1a1a1a;
+        margin: 1rem 0;
+    }
+
+    .product-copyright {
+        font-size: 0.75rem;
+        color: #999;
+        font-style: italic;
+        margin: 1rem 0;
+    }
+
+    .add-to-cart-btn {
+        width: 100%;
+        padding: 1rem;
+        background-color: #1a1a1a;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        transition: background-color 0.3s;
+        font-weight: 400;
+    }
+
+    .add-to-cart-btn:hover {
+        background-color: #333;
+    }
+
+    .add-to-cart-btn:active {
+        background-color: #000;
+    }
+
+    .notification {
+        position: fixed;
+        top: 100px;
+        right: 2rem;
+        background: #4caf50;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+        animation: slideIn 0.3s ease-out;
+        display: none;
+    }
+
+    .notification.show {
+        display: block;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            padding: 0 1.5rem;
+        }
+
+        .nav-links {
+            gap: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .container {
+            padding: 1.5rem;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+        }
+
+        .product-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><span class="logo-main">
+<img src="nook_logo.jpg">Art Gallery</a>
+            
+        </nav>
+    </header>
+
+
+        <h2>SHIPPING & DELIVERY</h2>
+
+<li>Domestic Shipping (United States)</li>
+
+<p>Shipping Rates</p>
+<li>Orders over $300: FREE SHIPPING</li>
+<li>Orders under $300: $25 flat rate</li>
+
+<h3>Processing Time</h3>
+
+<p>All original paintings are carefully packaged and shipped within 3-5 business days after 
+order confirmation.</p>
+<p> You will receive a tracking number via email once your artwork ships.</p>
+
+<h3>Delivery Time</h3>
+<li> Standard shipping: 5-7 business days after shipment</li>
+<li>Express shipping available upon request (additional fees apply)</li>
+
+<h3>International Shipping</h3>
+
+<p>We currently ship to select countries. International shipping costs vary based on:</p>
+<li> Destination country</li>
+<li>Artwork size and weightM</li>
+<li> Customs requirements</li>
+
+<h3>International shipping starts at $75 and is calculated at checkout.</h3>
+
+<p>Please note: International customers are responsible for any customs duties, taxes, 
+or import fees imposed by their country.</p>
+
+<h3>Packaging & Protection</h3>
+
+<p>Every painting is treated with the utmost care:</p>
+
+ <li>Canvas paintings are carefully wrapped in boxes with protective wrapping</li>
+<li>Framed paintings are wrapped in bubble wrap, corner protectors, and shipped in custom-sized boxes</li>
+<li> All shipments include full insurance coverage</li>
+<li> Fragile labels and handling instructions are clearly marked on all packages</li>
+
+<h3>Tracking & Insurance</h3>
+
+<li>All domestic and international shipments include tracking numbers</li>
+<li>Shipments are fully insured against loss or damage during transit</li>
+<li>You will receive email notifications with tracking information</li>
+
+<h3>Delivery Issues</h3>
+
+<h3>Lost or Damaged Packages</h3>
+<p>If your artwork arrives damaged or is lost in transit:</p>
+   <p> 1.    Contact us immediately at <a href="mailto:lchenma088@gmail.com">lchenma088@gmail.com</a> with photos (if damaged)</p>
+   <p> 2.    We will file an insurance claim</p>
+<p>3.    You will receive a replacement or full refund</p>
+
+<h3>Delivery Delays</h3>
+
+<p>While rare, shipping delays can occur due to weather, customs, or carrier issues. 
+Please contact us if your package has not arrived within the estimated timeframe.</p>
+
+<h3>Returns & Exchanges</h3>
+
+<h3>14-Day Return Policy</h3>
+
+<p>We want you to love your artwork! If you’re not completely satisfied, you may return your purchase within 14 days of delivery for a full refund.
+Return Conditions:</p>
+    <li> Original packaging must be used</li>
+    <li>Customer is responsible for return shipping costs</li>
+<li>Refund processed within 5 business days of receiving returned item</li>
+
+<h3>Exchanges</h3>
+
+<p>If you’d like to exchange your artwork for a different piece, please contact us to arrange an 
+exchange. Original shipping costs are non-refundable.</p>
+
+<h3>Contact Us</h3>
+
+<h3>Have questions about shipping or your order?</h3>
+<p><a href="mailto:lchenma088@gmail.com">Email: lchenma088@gmail.com</a></p>  
+<p>We typically respond to all inquiries within 24 hours.</p>
+<p>Last Updated: January 2026</p>
+
+<h3>SHIPPING INFORMATION</h3>
+
+<p>🚚 Free US shipping on orders over $300</p>
+<p>📦 Carefully packaged and insured</p>
+<p>📍 Ships within 3-5 business days</p>
+<p>🌍 International shipping available</p>
+
+</body>
+</html>

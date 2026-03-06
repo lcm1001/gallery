@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julie Biography - The Nook</title>
+    <style>
+        * {
+            margin: 10;
+            padding: 20;
+            box-sizing: border-box;
+        }
+
+
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background-color: #f5f3f0;
+    }
+
+    header {
+        background-color: #1a1a1a;
+        color: #f5dca5;
+        padding: 1.5rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav {
+        max-width: 100%;
+        padding: 0 1rem; /* Reduce padding on mobile */
+        flex-wrap: wrap; /* Allow wrapping */
+    }
+
+    .logo {
+        font-size: 1.3rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+        text-decoration: none;
+        color: #f5dca5;
+    }
+
+    .logo-main {
+        font-weight: 600;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 0.8rem; /* Smaller gap on mobile */
+        flex-wrap: wrap
+        
+    }
+
+    .nav-links a {
+        font-size: 0.75rem; /* Smaller text on mobile */
+        padding: 0.3rem 0.5rem;
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
+        
+    }
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+nav {
+padding: 0 3rem;
+}
+
+
+.nav-links {
+   gap: 2rem;
+}
+
+.nav-links a {
+   font-size: 0.95rem;
+}
+
+
+
+
+    .nav-links a:hover {
+        opacity: 0.6;
+    }
+
+</style>
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><span class="logo-main">
+<img src="nook_logo.jpg">Art Gallery</a>
+            
+        </nav>
+    </header>
+
+<img src="julie_portrait.jpg" align="left" hspace="50" Vspce="50"/>
+<p>Li Chen Ma:</p>
+<p>A Journey of Self-Discovery Through Paint</p>
+
+<p>Li Chen Ma’s path to becoming an oil painter defied convention from the very beginning. At 46, 
+when many artists have already established their careers, she picked up her first brush—not 
+in a formal studio, but in the quiet solitude of self-directed learning. </p>
+
+<p>What began as humble attempts at copying masterworks soon blossomed into something far more personal: a visual language entirely her own.
+“As long as I feel it is beautiful, there should be no rules for painting,” </p>
+<p>She (Li Chen Ma) asserts, a philosophy that permeates every canvas she creates. 
+This fearless approach to art-making, unburdened by academic constraints, has become her signature.</p>
+
+<p>Her artistic foundation, though unconventional, proved pivotal.
+ While studying at San Diego State University in California, 
+Ma took art courses that would plant the seeds of her creative vision. </p>
+
+<p>One assignment—transforming everyday objects into creatures—captured her imaginative 
+spirit perfectly. Her drawing of a broom metamorphosing into a cat so impressed her instructor that 
+it was selected for the student outdoor gallery, an early validation of her unique perspective.</p>
+
+<p>Years later, upon returning to California, Ma’s artistic interests expanded to embrace 
+landscape and interior design. This evolution is reflected in her work today, where serene 
+landscapes and contemplative floral still life dominate her portfolio. Yet her paintings 
+resist easy categorization—they are neither strictly realist nor impressionist, 
+but rather exist in a liminal space where creativity and artistry merge to reveal her 
+distinctive worldview.</p>
+
+<p>A profound sense of tranquility suffuses Ma’s work, drawing from her deep Buddhist faith. 
+Her art embodies her life philosophy: the delicate balance between yin and yang, light and shadow,
+ stillness and movement. In each brushstroke, she invites viewers into a world where beauty 
+transcends rules and artistic freedom becomes a form of meditation.</p>
+
+<p>
+My work spans both original compositions and classical studies.
+Through studying traditional painting techniques and master
+works, I've developed my own artistic voice while honoring
+time-tested approaches to composition and color.</p>
+
+<p>
+Each painting I create, whether an original vision or inspired
+by classical traditions, is hand-painted with care and
+attention to detail. Every piece represents my commitment to
+the craft of oil painting and my ongoing artistic development.</p>
+
+
+<p><a href="index.html">Back to Home</a></p>
+<p><a href="oil-paintings.html">Artwork (Oil Painting)</a></p>
+</html>
+
+

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copyright - The Nook</title>
+    <style>
+        * {
+            margin: 10;
+            padding: 20;
+            box-sizing: border-box;
+        }
+
+
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background-color: #f5f3f0;
+    }
+
+    header {
+        background-color: #1a1a1a;
+        color: white;
+        padding: 1.5rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav {
+        max-width: 100%;
+        padding: 0 1rem; /* Reduce padding on mobile */
+        flex-wrap: wrap; /* Allow wrapping */
+    }
+
+    .logo {
+        font-size: 1.3rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+        text-decoration: none;
+        color: #f5dca5;
+    }
+
+    .logo-main {
+        font-weight: 600;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 0.8rem; /* Smaller gap on mobile */
+        flex-wrap: wrap
+        
+    }
+
+    .nav-links a {
+        font-size: 0.75rem; /* Smaller text on mobile */
+        padding: 0.3rem 0.5rem;
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
+        
+    }
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+nav {
+padding: 0 3rem;
+}
+
+
+.nav-links {
+   gap: 2rem;
+}
+
+.nav-links a {
+   font-size: 0.95rem;
+}
+
+
+
+
+    .nav-links a:hover {
+        opacity: 0.6;
+    }
+
+    .nav-links a.active {
+        border-bottom: 2px solid white;
+        padding-bottom: 0.3rem;
+    }
+    .cart-link {
+        position: relative;
+        font-weight: 500 !important;
+    }
+    .cart-link {
+        position: relative;
+        font-weight: 500 !important;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -12px;
+        background: #e74c3c;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 3rem;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .page-header h1 {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 4px;
+        margin-bottom: 1rem;
+    }
+
+    .page-header p {
+        font-size: 1.1rem;
+        color: #666;
+        font-weight: 300;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .product-card {
+        background: white;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-image {
+        width: 339px;
+        height:426px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+.product-image1 {
+        width: 339px;
+        height:251px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .product-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(26, 26, 26, 0.9);
+        color: white;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+
+    .product-info {
+        padding: 2rem;
+    }
+
+    .product-info h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+
+    .product-artist {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .product-details {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 1rem;
+    }
+
+    .product-price {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #1a1a1a;
+        margin: 1rem 0;
+    }
+
+    .product-copyright {
+        font-size: 0.75rem;
+        color: #999;
+        font-style: italic;
+        margin: 1rem 0;
+    }
+
+    .add-to-cart-btn {
+        width: 100%;
+        padding: 1rem;
+        background-color: #1a1a1a;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        transition: background-color 0.3s;
+        font-weight: 400;
+    }
+
+    .add-to-cart-btn:hover {
+        background-color: #333;
+    }
+
+    .add-to-cart-btn:active {
+        background-color: #000;
+    }
+
+    .notification {
+        position: fixed;
+        top: 100px;
+        right: 2rem;
+        background: #4caf50;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+        animation: slideIn 0.3s ease-out;
+        display: none;
+    }
+
+    .notification.show {
+        display: block;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            padding: 0 1.5rem;
+        }
+
+        .nav-links {
+            gap: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .container {
+            padding: 1.5rem;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+        }
+
+        .product-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><span class="logo-main">
+<img src="nook_logo.jpg">Art Gallery</a>
+            
+        </nav>
+    </header>
+
+
+
+        <h2>COPYRIGHT & AUTHENTICITY</h2>
+
+<h3>This is an **original painting** by Li Chen Ma.</h3>
+
+<h3>** What you receive: **</h3>
+
+<li> Original, one-of-a-kind artwork</li>
+<li> Certificate of Authenticity signed by the artist</li>
+<li>Physical ownership of the painting</li>
+
+<h3>**Copyright Notice:**</h3>
+<p>&copy;Li Chen Ma. All rights reserved.</p>
+
+<li>The purchase of this artwork transfers ownership of the physical painting only. </li>
+<li>All intellectual property rights, including copyright and reproduction rights, 
+remain with the artist. The buyer may not reproduce, copy, photograph for commercial purposes, 
+create derivative works, or distribute images of this artwork without express written permission from the artist.
+</li>
+
+
+<h3>TERMS & CONDITIONS</h3>
+
+<p>*Last Updated: January 2026*</p>
+
+<p>Copyright & Intellectual Property Rights</p>
+
+<p>Original Artwork Copyright</p>
+
+<p>All artwork displayed and sold through The Nook website is original work created by Li Chen Ma and is 
+protected under international copyright law.</p>
+
+<h3>**Copyright Ownership:**</h3>
+
+<li>The artist retains ALL copyright and intellectual property rights to the artwork</li>
+<li>Purchase of original artwork transfers ownership of the physical piece only</li>
+<li> Copyright and reproduction rights remain exclusively with the artist</li>
+
+<h3>Prohibited Uses</h3>
+
+<h3>Buyers may NOT:</h3>
+
+<li>Reproduce the artwork in any form (digital, print, or otherwise)</li>
+<li>Photograph the artwork for commercial purposes</li>
+<li>Create derivative works based on the artwork</li>
+<li>Sell, license, or distribute reproductions or images of the artwork</li>
+<li>Use images of the artwork for marketing, advertising, or promotional materials</li>
+
+<h3>Permitted Uses</h3>
+
+<h3>Buyers MAY:</h3>
+
+<li>Display the physical artwork in private residences or offices</li>
+<li>Photograph the artwork for personal, non-commercial documentation</li>
+<li>Resell the original physical artwork (copyright remains with artist)</li>
+
+<h3>Commercial Licensing</h3>
+
+<p>If you are interested in licensing reproduction rights or commissioning work, 
+please contact us at info@thenooktaipei.com to discuss terms and pricing.</p>
+
+
+<h3>Authenticity & Certificates</h3>
+
+<h3>Each original painting sold through The Nook Taipei includes:</h3>
+
+<li>A signed Certificate of Authenticity from the artist</li>
+<li>Documentation of title, medium, dimensions, and year created</li>
+<li>Provenance information</li>
+
+<h3>**Authenticity Guarantee:** </h3>
+<p>We guarantee that all artwork sold is genuine and created 
+by Li Chen Ma. If authenticity is ever disputed, we will provide a full refund upon 
+return of the artwork.</p>
+
+
+<h3> Artwork Descriptions & Condition</h3>
+
+<p>We make every effort to accurately represent colors, textures, 
+and conditions of artwork through photography. However:</p>
+
+<li>Colors may vary slightly due to monitor settings and lighting</li>
+<li>Paintings are handmade and may contain natural variations</li>
+<li>Any significant imperfections will be noted in the product description</li>
+
+<li>If you have questions about a specific piece, please contact us before purchasing.</li>
+
+
+<h3>Pricing & Payment</h3>
+
+<li>All prices are listed in USD</li>
+<li>Prices are subject to change without notice</li>
+<li>Payment must be received in full before artwork ships</li>
+<li>Accepted payment methods: credit cards, PayPal, bank transfer</li>
+
+
+<h3>Shipping & Delivery</h3>
+
+<h3>Please refer to our <a href="shipping.html"> [Shipping Policy]</a> 
+for detailed information regarding:</h3>
+
+<li>Shipping rates and free shipping threshold</li>
+<li>Processing times</li>
+<li>Packaging methods</li>
+<li>International shipping</li>
+<li>Insurance and tracking</li>
+
+
+<h3>Returns & Refunds</h3>
+
+<h3>14-Day Return Policy</h3>
+
+<p>You may return artwork within 14 days of delivery if:</p>
+
+<li>Artwork is in original, undamaged condition</li>
+<li>Original packaging is used for return</li>
+<li>You provide proof of purchase</li>
+
+<h3>**Return Process:**</h3>
+
+<p>1. Contact us at lchenma088@gmail.com within 14 days of delivery</p>
+<p>2. Receive return authorization and instructions</p>
+<p>3. Ship artwork back using original packaging</p>
+<p>4. Refund processed within 5 business days of receiving returned item</p>
+
+<h3>**Non-Refundable:**</h3>
+
+<li>Original shipping costs</li>
+<li>Return shipping costs</li>
+<li>Custom or commissioned artwork (unless defective)</li>
+
+<h3>Damaged or Lost in Transit</h3>
+
+<h3>If artwork arrives damaged or is lost during shipping:</h3>
+
+<li>Contact us immediately with photographic evidence</li>
+<li>Full refund or replacement will be provided</li>
+<li>- All shipments are fully insured</li>
+
+
+
+<h3>Custom & Commission Work</h3>
+
+<h3>Custom commissioned artwork is available upon request.</h3>
+
+<h3>**Commission Terms:**</h3>
+
+<li>50% deposit required to begin work</li>
+<li>Remaining balance due before shipping</li>
+<li>Estimated completion time: 4-8 weeks</li>
+<li>Copyright remains with the artist</li>
+<li>Commissions are non-refundable once work has begun</li>
+
+<p>Contact us at info@thenook.com to discuss commission inquiries.</p>
+
+
+
+<h3>Privacy & Data Protection</h3>
+
+<p>Your privacy is important to us. We collect and use personal information only for:</p>
+
+<li>Order processing and fulfillment</li>
+<li>Customer service communications</li>
+<li>Shipping and delivery</li>
+
+<h3>We do NOT:</h3>
+
+<li>Sell or share your information with third parties</li>
+<li>Send unsolicited marketing emails (unless you opt in)</li>
+<li>Store credit card information</li>
+
+
+<h3>Limitation of Liability</h3>
+
+<h3>The Nook Taipei and Li Chen Ma shall not be liable for:</h3>
+
+<li>Indirect, incidental, or consequential damages</li>
+<li>Loss of profits or revenues</li>
+<li>Delays in shipping beyond our control</li>
+<li>Customs fees or import duties for international orders</li>
+
+<p>Maximum liability is limited to the purchase price of the artwork.</p>
+
+
+<h3>Dispute Resolution</h3>
+
+<p>Any disputes arising from purchases will be resolved through:</p>
+
+<p>1. Direct communication with The Nook</p>
+<p>2. Mediation if necessary</p>
+<p>3. Governed by the laws of US</p>
+
+<h3>Contact Information</h3>
+
+<h3>**The Nook **</h3>
+<p><a href="mailto:lchenma088@gmail.com">Email: lchenma088@gmial.com</a></p>
+<p>For copyright licensing inquiries or commission requests, 
+please email with “Copyright Inquiry” or “Commission Request” in the subject line.</p>
+
+
+<h3>Changes to Terms</h3>
+
+<p>We reserve the right to update these Terms & Conditions at any time. 
+Changes will be effective immediately upon posting to this website. 
+Continued use of the website constitutes acceptance of updated terms.</p>
+
+
+<p>*By purchasing artwork from The Nook, you acknowledge that you have read, 
+understood, and agree to these Terms & Conditions.*</p>
+
+
+
+<p>&copy; Li Chen Ma. All rights reserved.</p>
+
+<p>This certificate confirms that the above-described artwork is an authentic, 
+original work by Li Chen Ma. The purchase of this artwork conveys ownership of the physical piece only. 
+All copyright and reproduction rights remain the exclusive property of the artist.</p>
+
+
+<footer>
+<p>The Nook</p>
+<p><a href="mailto:lchenma088@gmail.com">Email: lchenma088@gmail.com</a></p>
+<p>&copy;2026 Li Chen Ma / The Nook. All rights reserved.</p>
+<p>All artwork and images are protected by copyright.</p>
+
+<p>Unauthorized reproduction or use of artwork is prohibited.</p>
+
+<!-- Notification popup -->
+<div class="notification" id="notification"></div>
+
+
+
+</body>
+</html>

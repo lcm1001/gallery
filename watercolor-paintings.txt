@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Nook-Watercolor Paintings</title>
+    <style>
+        * {
+            margin: 10;
+            padding: 10;
+            box-sizing: border-box;
+        }
+
+
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background-color: #f5f3f0;
+        width: 100%;
+        overflow-x: hidden;
+
+    }
+
+    header {
+        background-color: #1a1a1a;
+        color: white;
+        padding: 1.5rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+ nav {
+        max-width: 100%;
+        padding: 0 1rem; /* Reduce padding on mobile */
+        flex-wrap: wrap; /* Allow wrapping */
+    }
+
+    .logo {
+        font-size: 1.3rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+        text-decoration: none;
+        color: #f5dca5;
+    }
+
+    .logo-main {
+        font-weight: 600;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 0.8rem; /* Smaller gap on mobile */
+        flex-wrap: wrap
+        
+    }
+
+    .nav-links a {
+        font-size: 0.75rem; /* Smaller text on mobile */
+        padding: 0.3rem 0.5rem;
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
+        
+    }
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+nav {
+padding: 0 3rem;
+}
+
+
+.nav-links {
+   gap: 2rem;
+}
+
+.nav-links a {
+   font-size: 0.95rem;
+}
+
+
+}
+
+    .nav-links a:hover {
+        opacity: 0.6;
+    }
+
+    .nav-links a.active {
+        border-bottom: 2px solid white;
+        padding-bottom: 0.3rem;
+    }
+
+.logo{
+   font-size:1.3rem;
+   font-weight:300;
+letter-spacing:3px;
+color: #f5dca5;
+
+}
+
+    .cart-link {
+        position: relative;
+        font-weight: 500 !important;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -12px;
+        background: #e74c3c;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 3rem;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .page-header h1 {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 4px;
+        margin-bottom: 1rem;
+    }
+
+    .page-header p {
+        font-size: 1.1rem;
+        color: #666;
+        font-weight: 300;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .product-card {
+        background: white;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        width: 100%
+        margin: 0 auto; 
+        transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-image {
+        width: 100%;
+        max-width: 100%;
+        height:271px;
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative;
+        background-color: #fafafa;
+        margin: 0 auto;
+    }
+
+.product-image1 {
+        width: 100%;
+        max-width: 100%;
+        height:433px;
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative;
+        background-color: #fafafa;
+        margin: 0 auto
+    }
+
+  
+.product-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(26, 26, 26, 0.9);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    z-index: 10;
+}
+
+    .product-info {
+        padding: 2rem;
+    }
+
+    .product-info h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+
+    .product-artist {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .product-details {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 1rem;
+    }
+
+    .product-price {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #1a1a1a;
+        margin: 1rem 0;
+    }
+
+    .product-copyright {
+        font-size: 0.75rem;
+        color: #999;
+        font-style: italic;
+        margin: 1rem 0;
+    }
+
+    .add-to-cart-btn {
+        width: 100%;
+        padding: 1rem;
+        background-color: #1a1a1a;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        transition: background-color 0.3s;
+        font-weight: 400;
+    }
+
+    .add-to-cart-btn:hover {
+        background-color: #333;
+    }
+
+    .add-to-cart-btn:active {
+        background-color: #000;
+    }
+
+    .notification {
+        position: fixed;
+        top: 100px;
+        right: 2rem;
+        background: #4caf50;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+        animation: slideIn 0.3s ease-out;
+        display: none;
+    }
+
+    .notification.show {
+        display: block;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            padding: 0 1.5rem;
+        }
+
+        .nav-links {
+            gap: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .container {
+            padding: 1.5rem;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+        }
+
+        .product-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><span class="logo-main">
+<img src="nook_logo.jpg">Art Gallery</a>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+<li><a href="julie_biography.html">ARTIST BIO</a></li>
+                <li><a href="oil-paintings.html">OIL/FLORAL</a></li>
+                <li><a href="landscape-paintings.html">OIL/LANDSCAPE</a></li>
+                <li><a href="watercolor-paintings.html" class="active">WATERCOLORS</a></li>
+<li><a href="classical-study-paintings.html">CLASSICAL STUDY</a></li>
+
+<li><a href="shipping.html">SHIPPING</a></li>
+<li><a href="copyright.html">COPYRIGHT</a></li>
+                <li><a href="cart.html" class="cart-link">
+                    CART
+                    <span class="cart-count" id="cartCount">0</span>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+<div class="container">
+    <div class="page-header">
+        <h1>WATERCOLOR PAINTINGS</h1>
+        <p>Original works by Li Chen Ma • Each painting includes Certificate of Authenticity</p>
+<p>Free US Shipping On Orders $300+</p>
+    </div>
+
+    <div class="product-grid">
+
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="product-image" style="background-image: url('images/watercolor/lotus_resilience.jpg');">
+               
+                  
+                <div class="product-badge">ORIGINAL</div>
+            </div>
+            <div class="product-info">
+                <h3>Resilience Lotus</h3>
+                <p class="product-artist">by Li Chen Ma</p>
+                <p class="product-details">Watercolor w/Frame • 38.5" × 30.5" • 2011</p>
+                <p class="product-price">$980</p>
+                <p class="product-copyright">© Li Chen Ma. All rights reserved.</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Resilient Lotus', 'Li Chen Ma', 980, 'Watercolor w/Frame, 38.5\' × 30.5\'')">
+                    ADD TO CART
+                </button>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+
+        <div class="product-card">
+            <div class="product-image1" style="background-image: url('images/watercolor/lotus_gentle.jpg');">
+               
+                <div class="product-badge">ORIGINAL</div>
+            </div>
+            <div class="product-info">
+                <h3>Gentle Lotus</h3>
+                <p class="product-artist">by Li Chen Ma</p>
+                <p class="product-details">Watercolor w/frame • 27" × 21" • 2012</p>
+                <p class="product-price">$580</p>
+                <p class="product-copyright">© Li Chen Ma. All rights reserved.</p>
+                <button class="add-to-cart-btn" onclick="addToCart('Gentle Lotus', 'Li Chen Ma', 580, 'Oil on Canvas, 27\' × 21\'')">
+                    ADD TO CART
+                </button>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+<!-- Notification popup -->
+<div class="notification" id="notification"></div>
+
+<script>
+    // Shared cart management system
+    // This code should be the same across all your painting pages
+
+    // Get cart from localStorage
+    function getCart() {
+        return JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+    }
+
+    // Save cart to localStorage
+    function saveCart(cart) {
+        localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        updateCartCount();
+    }
+
+    // Update cart count badge
+    function updateCartCount() {
+        const cart = getCart();
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cartCount').textContent = totalItems;
+       
+        // Hide badge if cart is empty
+        const badge = document.getElementById('cartCount');
+        badge.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+
+    // Add item to cart
+    function addToCart(title, artist, price, details) {
+        let cart = getCart();
+       
+        // Check if item already exists
+        const existingItem = cart.find(item => item.title === title);
+       
+        if (existingItem) {
+            existingItem.quantity += 1;
+            showNotification(`Updated quantity for "${title}"`);
+        } else {
+            cart.push({
+                title: title,
+                artist: artist,
+                price: price,
+                details: details,
+                quantity: 1,
+                type: 'Oil Painting' // You can change this for different pages
+            });
+            showNotification(`"${title}" added to cart!`);
+        }
+       
+        saveCart(cart);
+    }
+
+    // Show notification
+    function showNotification(message) {
+        const notification = document.getElementById('notification');
+        notification.textContent = message;
+        notification.classList.add('show');
+       
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+
+    // Initialize cart count on page load
+    updateCartCount();
+</script>
+
+
+</body>
+</html>
