@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Jolla Seascape - The Nook Gallery</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #f5f3f0;
+            color: #1a1a1a;
+            line-height: 1.8;
+        }
+
+        .hero {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #1a3a5c 0%, #2d6a8f 40%, #c4a882 80%, #d4b896 100%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(180deg, transparent, rgba(26,26,26,0.4));
+        }
+
+        .hero-label {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-label p {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .hero-label h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Opening Quote */
+        .opening-quote {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+
+.product-image1 {
+        width: 339px;
+        max-width: 339px;
+        height: 273px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        background-color: #fafafa;
+        margin: 0 auto;
+    }
+
+        .opening-quote blockquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .opening-quote cite {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: #888;
+            font-style: normal;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Story Section */
+        .story h2 {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: #888;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .story p {
+            font-size: 1.05rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .story p.highlight {
+            font-size: 1.15rem;
+            color: #1a1a1a;
+            font-style: italic;
+            padding-left: 1.5rem;
+            border-left: 3px solid #D4AF37;
+            margin: 2rem 0;
+        }
+
+        /* Artwork Details */
+        .artwork-details {
+            background: white;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-top: 3px solid #1a1a1a;
+        }
+
+        .artwork-details h3 {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: #888;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-item label {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: #aaa;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-item p {
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .buy-btn {
+            background: #white;
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            transition: background 0.3s;
+        }
+
+        .buy-btn:hover {
+            background: #1a1a1a;
+        }
+
+        /* Includes */
+        .includes {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .include-item {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 1px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .include-item::before {
+            content: '✓';
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        /* Artist Signature */
+        .artist-sign {
+            text-align: right;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .artist-sign p {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: #888;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .artist-sign .name {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #1a1a1a;
+        }
+
+        /* Instagram Caption Box */
+        .caption-box {
+            background: #1a1a1a;
+            color: white;
+            padding: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .caption-box h3 {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: #D4AF37;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .caption-box p {
+            font-size: 0.9rem;
+            line-height: 1.9;
+            color: #ccc;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .caption-box .hashtags {
+            font-size: 0.8rem;
+            color: #D4AF37;
+            line-height: 1.8;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #aaa;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            letter-spacing: 2px;
+            margin-top: 3rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .hero-label h1 { font-size: 1.8rem; }
+            .opening-quote blockquote { font-size: 1.1rem; }
+            .details-grid { grid-template-columns: 1fr; }
+            .content { padding: 2rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-label">
+<div class="product-image1" style="background-image: url('images/oil_landscape/lajolla_ocean_view.jpg');">
+                
+            </div>
+            <p>THE NOOK GALLERY · ORIGINAL OIL PAINTING</p>
+            <h1>Coastal Villa -- La Jolla</h1>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Opening Quote -->
+        <div class="opening-quote">
+            <blockquote>
+                "La Jolla — The Jewel of Southern California —<br>
+                where the Pacific speaks in light, color,<br>
+                and endless horizon."
+            </blockquote>
+            <cite>— LI CHEN MA</cite>
+        </div>
+
+        <!-- Story -->
+        <div class="story">
+            <h2>THE STORY BEHIND THE PAINTING</h2>
+
+            <p>
+                La Jolla, whose name means <em>"The Jewel"</em> in Spanish, is one of Southern
+                California's most magnificent coastal treasures. Perched dramatically above the
+                Pacific Ocean, its rugged sandstone cliffs, hidden sea caves, and crystalline
+                waters have inspired artists, poets, and dreamers for generations.
+            </p>
+
+            <p class="highlight">
+                I was not painting a postcard. I was painting a feeling — the particular
+                stillness that settles over you when you stand at the edge of the Pacific
+                and realize how beautifully vast the world truly is.
+            </p>
+
+            
+
+            <p>
+                As a self-taught artist who paints from emotion rather than formula, I let
+                the landscape guide my brush. This piece was painted with patience and
+                reverence — layer by layer, until the canvas held not just the scenery,
+                but the soul of this remarkable place.
+            </p>
+
+            <p>
+                My hope is that wherever this painting finds its home — whether in a
+                sun-filled living room or a quiet study — it carries with it a whisper
+                of the California coast, and the peace that comes from standing at
+                the edge of something infinite.
+            </p>
+        </div>
+
+        <!-- Artwork Details -->
+        <div class="artwork-details">
+            <h3>ARTWORK DETAILS</h3>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <label>TITLE</label>
+                    <p>Coastal Villa</p>
+                </div>
+                <div class="detail-item">
+                    <label>ARTIST</label>
+                    <p>Li Chen Ma</p>
+                </div>
+                <div class="detail-item">
+                    <label>MEDIUM</label>
+                    <p>Oil on Canvas</p>
+                </div>
+                <div class="detail-item">
+                    <label>SUBJECT</label>
+                    <p>La Jolla, Southern California</p>
+                </div>
+                <div class="detail-item">
+                    <label>STYLE</label>
+                    <p>Contemporary Landscape</p>
+                </div>
+                <div class="detail-item">
+                    <label>AVAILABILITY</label>
+                    <p>Original · One of a Kind</p>
+                </div>
+            </div>
+
+            <div class="includes">
+                <span class="include-item">Original hand-painted artwork</span>
+                <span class="include-item">Certificate of Authenticity</span>
+                <span class="include-item">Free US shipping over $300</span>
+                <span class="include-item">Fully insured delivery</span>
+            </div>
+
+            <div class="price-row">
+                <div class="price">$420</div>
+                <button class="buy-btn"><a href="mailto:lchenma088@gmail.com">lchenma088@gmail.com</a></button>
+            </div>
+        </div>
+
+        <!-- Artist Signature -->
+        <div class="artist-sign">
+            <p>WITH GRATITUDE</p>
+            <div class="name">Li Chen Ma</div>
+            <p style="margin-top: 0.5rem;">THE NOOK GALLERY</p>
+        </div>
+
+        <!-- Instagram Caption -->
+        <div class="caption-box">
+            
+            <p>
+                🌊 La Jolla — "The Jewel" of Southern California 💎
+            </p>
+            <p>
+                There is a particular stillness at the edge of the Pacific.<br>
+                The beautiful coastal villas are filled with blooming flowers and vibrant colors.<br>
+                I tried to capture it all in this original oil painting.
+            </p>
+            <p>
+                This is not just a landscape — it is a feeling.<br>
+               
+            </p>
+            <p>
+                🖌️ Original oil on canvas · by Li Chen Ma<br>
+                📜 Certificate of Authenticity included<br>
+                🚚 Free US shipping on orders $300+<br>
+                💌 DM or email to purchase via Zelle
+            </p>
+            <p><a href="landscape-paintings.html" class="active">👉 Link in bio to view the full collection</a></p>
+           
+        </div>
+
+        <p class="copyright">© Li Chen Ma · The Nook Gallery · All Rights Reserved</p>
+
+    </div>
+
+</body>
+</html>
+
+
