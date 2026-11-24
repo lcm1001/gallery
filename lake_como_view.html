@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Journey to Lake Como</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap">
+
+<style>
+  :root {
+    --bg: #f9f6f1;
+    --fg: #1e1a16;
+    --fg-muted: #6e6760;
+    --accent: #6b7c4a;
+    --accent-light: #eef2e8;
+    --gold: #a07838;
+    --rose: #c47a6a;
+    --card-bg: #ffffff;
+    --card-border: #e6e0d6;
+    --hero-top: #d4c9b8;
+    --hero-mid: #c8d4b0;
+    --hero-bottom: #e8dfd0;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12110e;
+      --fg: #ede8df;
+      --fg-muted: #857e74;
+      --accent: #94a86a;
+      --accent-light: #161e0d;
+      --gold: #c09850;
+      --rose: #d4907e;
+      --card-bg: #1c1a16;
+      --card-border: #2e2c26;
+      --hero-top: #1a1c10;
+      --hero-mid: #141c0c;
+      --hero-bottom: #1c1610;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #12110e;
+    --fg: #ede8df;
+    --fg-muted: #857e74;
+    --accent: #94a86a;
+    --accent-light: #161e0d;
+    --gold: #c09850;
+    --rose: #d4907e;
+    --card-bg: #1c1a16;
+    --card-border: #2e2c26;
+    --hero-top: #1a1c10;
+    --hero-mid: #141c0c;
+    --hero-bottom: #1c1610;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(155deg, var(--hero-top) 0%, var(--hero-mid) 45%, var(--hero-bottom) 100%);
+    padding: 68px 24px 52px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 60% at 20% 70%, rgba(255,255,255,.22) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 40% at 80% 25%, rgba(196,122,106,.12) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .gallery-name {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: .74rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 26px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(2.4rem, 7vw, 4rem);
+    line-height: 1.15;
+    text-wrap: balance;
+    color: var(--fg);
+    margin-bottom: 10px;
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--fg-muted);
+    margin-bottom: 36px;
+  }
+
+  .hero-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto;
+    opacity: .65;
+  }
+
+  /* ── Seasonal badge ── */
+  .seasonal-ribbon {
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    padding: 10px 24px;
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  /* ── Layout ── */
+  .page-body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── Opening quote ── */
+  .opening-quote {
+    padding: 52px 0 40px;
+    text-align: center;
+  }
+
+  .opening-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 3.2vw, 1.6rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--fg);
+    text-wrap: balance;
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+
+  .opening-quote cite {
+    font-family: 'Jost', sans-serif;
+    font-size: .76rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-style: normal;
+  }
+
+.product-image {
+        width: 339px;
+        max-width: 339px;
+        height: 253px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        background-color: #fafafa;
+        margin: 0 auto;
+    }
+
+  /* ── Story ── */
+  .story {
+    border-top: 1px solid var(--card-border);
+    padding-top: 40px;
+  }
+
+  .story p {
+    font-size: 1.03rem;
+    color: var(--fg);
+    margin-bottom: 22px;
+  }
+
+  .pull-quote {
+    border-left: 3px solid var(--rose);
+    padding: 16px 22px;
+    margin: 32px 0;
+    background: var(--accent-light);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--rose);
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  /* ── Atmosphere section ── */
+  .atmosphere {
+    margin-top: 44px;
+    padding: 28px 28px 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+  }
+
+  .section-label {
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .atmosphere-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 18px;
+  }
+
+  .atm-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .atm-icon {
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+
+  .atm-label {
+    font-size: .78rem;
+    color: var(--fg-muted);
+    letter-spacing: .05em;
+  }
+
+  .atm-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--fg);
+  }
+
+  /* ── Details grid ── */
+  .details-section {
+    margin-top: 36px;
+  }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1px;
+    background: var(--card-border);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .detail-item {
+    background: var(--card-bg);
+    padding: 16px 18px;
+  }
+
+  .detail-label {
+    font-size: .68rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 4px;
+  }
+
+  .detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--fg);
+  }
+
+  /* ── Includes ── */
+  .includes {
+    margin-top: 32px;
+    padding: 22px 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+  }
+
+  .includes ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px 24px;
+    margin-top: 12px;
+  }
+
+  .includes li {
+    font-size: .9rem;
+    color: var(--fg-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .includes li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  /* ── Price / CTA ── */
+  .purchase-section {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 24px 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+  }
+
+  .price-note {
+    font-size: .7rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 4px;
+  }
+
+  .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--fg);
+    line-height: 1;
+  }
+
+  .price-ship {
+    font-size: .78rem;
+    color: var(--accent);
+    margin-top: 4px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 13px 28px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 4px;
+    font-family: 'Jost', sans-serif;
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: opacity .15s;
+  }
+
+  .cta-btn:hover { opacity: .85; }
+
+  /* ── Instagram caption ── */
+  .caption-section {
+    margin-top: 52px;
+    padding-top: 40px;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .caption-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+  }
+
+  .caption-box p {
+    font-size: .95rem;
+    line-height: 1.8;
+    color: var(--fg);
+    white-space: pre-line;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--accent-light);
+    border: 1px solid var(--card-border);
+    color: var(--accent);
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-family: 'Jost', sans-serif;
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .15s;
+  }
+
+  .copy-btn:hover { background: var(--accent); color: #fff; }
+
+  .hashtags {
+    margin-top: 14px;
+    font-size: .82rem;
+    color: var(--accent);
+    line-height: 1.9;
+  }
+
+  footer {
+    text-align: center;
+    padding: 32px 24px 40px;
+    border-top: 1px solid var(--card-border);
+    font-size: .78rem;
+    color: var(--fg-muted);
+    letter-spacing: .06em;
+  }
+</style>
+
+<div class="seasonal-ribbon">🕯️ Create a Cozy Winter Atmosphere · Original Hand-Painted Oil Paintings</div>
+
+<header class="hero">
+  <p class="gallery-name">The Nook · Original Oil Paintings</p>
+<div class="product-image" style="background-image: url('images/oil_landscape/lake_como.jpg');">
+</div>
+
+  <h1>A Journey to Lake Como</h1>
+  <p class="hero-sub">A Journey to Lake Como · Oil on canvas by Li Chen Ma</p>
+  <div class="hero-divider"></div>
+<p class="hero-sub">Two paintings born from one unforgettable stay · Oil on canvas by Li Chen Ma</p>
+
+</header>
+
+<main class="page-body">
+
+  <section class="opening-quote">
+    <p>"Some places don't just leave an impression — they leave a longing. 
+Lake Como was that place for me. I knew I had to paint it before the feeling faded."</p>
+    <cite>— Li Chen Ma</cite>
+  </section>
+
+  <section class="story">
+    <p>During our stay at one of Lake Como's historic lakeside hotels — 
+One morning, we took a walk along the lake. On the way back, I saw a lovely little house by the lake. 
+The lake view, the mountains and this little house blended perfectly together, with flowerpots and plants adding a touch of elegance,
+creating a stunning scene. 
+</p>
+
+    <div class="pull-quote">
+      <p>
+This Paiting captures the beauty of the lake and mountains in the most serene way - the lovely little 
+house, flower pots, and plants make this scene showcase the most beautiful natural scenery.
+</p>
+    </div>
+
+    <p>I photographed every corner, knowing I would need those images later, back in the studio, 
+when the light and the fragrance and the absolute stillness of that morning were only a memory. 
+
+</p>
+    
+    <p>Hung in a living room or study, especially through the cooler months, it does what the best interiors art does: it makes a space feel inhabited by a life fully lived.</p>
+  </section>
+
+  <!-- Atmosphere -->
+  <div class="atmosphere" style="margin-top:44px;">
+    <p class="section-label">Perfect For</p>
+    <div class="atmosphere-grid">
+      <div class="atm-item">
+        <span class="atm-icon">🕯️</span>
+        <span class="atm-label">Setting</span>
+        <span class="atm-value">Cozy winter interiors</span>
+      </div>
+      <div class="atm-item">
+        <span class="atm-icon">🛋️</span>
+        <span class="atm-label">Room</span>
+        <span class="atm-value">Living room, study, bedroom</span>
+      </div>
+      <div class="atm-item">
+        <span class="atm-icon">🎁</span>
+        <span class="atm-label">Occasion</span>
+        <span class="atm-value">Housewarming, holiday gift</span>
+      </div>
+      <div class="atm-item">
+        <span class="atm-icon">🌿</span>
+        <span class="atm-label">Mood</span>
+        <span class="atm-value">Warm, serene, nostalgic</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Artwork details -->
+  <section class="details-section" style="margin-top:36px;">
+    <p class="section-label">Artwork Details</p>
+    <div class="details-grid">
+      <div class="detail-item"><div class="detail-label">Title</div><div class="detail-value">A Journey to Lake Como</div></div>
+      <div class="detail-item"><div class="detail-label">Artist</div><div class="detail-value">Li Chen Ma</div></div>
+      <div class="detail-item"><div class="detail-label">Medium</div><div class="detail-value">Oil on Canvas</div></div>
+      <div class="detail-item"><div class="detail-label">Subject</div><div class="detail-value">Garden Landscape</div></div>
+      <div class="detail-item"><div class="detail-label">Style</div><div class="detail-value">Impressionist Realism</div></div>
+      <div class="detail-item"><div class="detail-label">Availability</div><div class="detail-value">One of a Kind · Original</div></div>
+    </div>
+
+    <div class="includes">
+      <p class="section-label">Every Purchase Includes</p>
+      <ul>
+        <li>Original signed artwork</li>
+        <li>Certificate of authenticity</li>
+        <li>Artist's story card</li>
+        <li>Free US shipping (orders over $300)</li>
+        <li>Insured and tracked delivery</li>
+        <li>Gift-ready packaging</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="purchase-section">
+    <div>
+      <p class="price-note">Price</p>
+      <p class="price">$420</p>
+      <p class="price-ship">Free shipping included</p>
+    </div>
+   
+  </div>
+
+  <!-- Instagram caption -->
+  <section class="caption-section">
+    <p class="section-label">Instagram Caption</p>
+    <div class="caption-box">
+      
+      <p id="captionText">This garden was real. 🌸
+
+Li Chen Ma planted it herself, tended it for years, and watched it grow from bare soil into something breathtaking. When it finally reached its peak — every bloom open at once — she painted it.
+
+The house is gone. The garden is gone. But this painting remains.
+
+"A Garden in Full Bloom" is a hand-painted original oil on canvas, warm and luminous — the kind of piece that makes any room feel like home, especially on a cold winter evening.
+
+✨ Original artwork · Certificate of authenticity included
+🚚 Free US shipping on orders over $300
+🔗 Link in <a href="http://www.instagram.com/thenookgallery?dlrf=MWpqM2Vnam1rc2RsMQ=="> bio </a> on Instagram to inquire</p>
+      
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 The Nook · Original Paintings by Li Chen Ma · All rights reserved
+</footer>
+
+<script>
+  function copyCaption() {
+    const text = document.getElementById('captionText').textContent.trim();
+    const btn = document.getElementById('copyBtn');
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    }).catch(() => {
+      const sel = window.getSelection();
+      const range = document.createRange();
+      range.selectNode(document.getElementById('captionText'));
+      sel.removeAllRanges();
+      sel.addRange(range);
+      btn.textContent = 'Selected';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    });
+  }
+</script>
+</body>
+</html>
